@@ -114,7 +114,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDAO {
 		List<LoginRegisterDTO> dtoreturn=new ArrayList<LoginRegisterDTO>();
 		boolean  flag = false;
 		templt=new JdbcTemplate();
-		Object  obj[]= new Object[10];
+		Object  obj[]= new Object[1];
 		ArrayList<Object> al=new   ArrayList<Object>();
 		al.add(obj);
 		

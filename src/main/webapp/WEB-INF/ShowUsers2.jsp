@@ -12,13 +12,19 @@
 <title>All Users Details</title>
 </head>
 <body class="body1">
- <div  align="center">
+ <div class="box" align="center">
 <form action="showuserDtls" method="post">   
   <label for="html">Name</label>
 <input type="text" id="Fname"  placeholder=" Name" name="Fname">  
   <label for="html">Mobile No.</label>
-<input type="text" id="Contact"  placeholder=" Mobile No." name="Contact">  
-<button type="submit">Submit</button>   
+<input type="text" id="Contact"  placeholder=" Mobile No." name="Contact">  <br>
+   <label for="birthday">From Date:</label>
+  <input type="date" id="date" name="date">
+  <label for="birthday">To Date:</label>
+  <input type="date" id="todate" name="todate">
+
+
+<button type="submit">Search</button>   
 </form> 
     </div>   
     <div class="theader" align="center">
@@ -57,5 +63,8 @@
         </table>
     </div>
 
+    <script> 
+   
+    </script> 
 </body>
 </html>

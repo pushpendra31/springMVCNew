@@ -1,6 +1,7 @@
 package com.myproj.DTOs;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -58,8 +59,16 @@ public class LoginRegisterDTO implements Serializable{
 				+ ", toString()=" + super.toString() + "]";
 	}
 	private Long Contact;
+	
+	private String date;
 	public int getPersonid() {
 		return personid;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public void setPersonid(int personid) {
 		this.personid = personid;

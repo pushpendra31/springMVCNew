@@ -43,3 +43,6 @@ th {
   background-repeat: no-repeat;
   background-position: 100% 100%;
 }
+
+.box {
+  --box-border--border: linear-gradient(105deg, rgb(255 46 144) 0%, rgb(61 35 185) 100%);}
