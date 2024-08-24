@@ -1,23 +1,49 @@
 package com.myproj.DTOs;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 @Component("logindto")
+@Entity
+@Table(name ="persons")
 public class LoginRegisterDTO implements Serializable{
-	private int personid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "personID")
+	private int personid;	
+	@Column(name = "FirstName")
 	private String  Fname;
+	@Column(name = "LastName")
 	private String LastName;
+	@Column(name = "Address")
 	private String  Address;
+	@Column(name = "City")
 	private String city;
+	@Column(name = "email")
 	private String Email;
+	@Column(name = "password")
 	private String password;
-	private String Gender;
-	private Long contactno;		
+	@Column(name = "gender")
+	private String Gender;	
+	@Column(name = "contact_no")
+	private Long contactno;	
+	@Column(name = "username")
 	private String username;
+
 	private boolean flag;
+	@Column(name = "role")
+
 	private String  role;
 	
 	
@@ -60,6 +86,7 @@ public class LoginRegisterDTO implements Serializable{
 	}
 	private Long Contact;
 	
+	@Column(name = "CRT_DT")
 	private String date;
 	public int getPersonid() {
 		return personid;

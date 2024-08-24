@@ -12,12 +12,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.myproj.ConfigJava.DBConUtil;
+import com.myproj.ConfigJava.HibernateSession;
 import com.myproj.DAO.LoginRegisterDAO;
 import com.myproj.DTOs.LoginRegisterDTO;
 import com.zaxxer.hikari.HikariDataSource;
@@ -25,6 +28,8 @@ import com.zaxxer.hikari.HikariDataSource;
 public class LoginRegisterDaoImpl implements LoginRegisterDAO {
 	@Autowired
 	DBConUtil dbutil;
+	@Autowired
+	HibernateSession HbSession;
 	//@Autowired   isnot working so  created  object   below
 	JdbcTemplate  templt;
 	
@@ -156,6 +161,24 @@ public class LoginRegisterDaoImpl implements LoginRegisterDAO {
 		 * } return dtoReturn; } });
 		 */
 		return dtoreturn;
+	}
+
+	@Override
+	public boolean adduserHB(LoginRegisterDTO dto) {
+	boolean flag=false;
+	Session session = HbSession.getSession();
+	   LocalDateTime now = LocalDateTime.now(); 
+	   int  id=0;
+	   DateTimeFormatter todaydate = DateTimeFormatter.ofPattern("dd.MM.yyyy"); 
+	   String str = now.format(todaydate);
+	   dto.setDate(str);
+	Transaction tx = session.beginTransaction();
+	
+	session.persist(dto);
+	tx.commit();
+	session.close();
+	
+		return false;
 	}
 
 

@@ -48,4 +48,10 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
 		return dao.showRegistereduser(dto);
 	}
 
+	@Override
+	public boolean adduserHB(LoginRegisterDTO dto) {
+		boolean flag=dao.adduserHB(dto);
+		return flag;
+	}
+
 }

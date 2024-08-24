@@ -12,5 +12,6 @@ public interface LoginRegisterService {
 	public boolean adduser(LoginRegisterDTO dto)throws  Exception;
 	public LoginRegisterDTO CheckExistingUser(LoginRegisterDTO dto) throws SQLException;
 	public List<LoginRegisterDTO> showRegistereduser(LoginRegisterDTO dto)throws  Exception;
+	public boolean adduserHB(LoginRegisterDTO dto);
 
 }

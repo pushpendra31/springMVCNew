@@ -100,7 +100,9 @@ LoginRegisterDTO login = null;
 			 if(existcheck==null ) {
 				 
 			 
-			boolean flag=service.adduser(dto);
+			//boolean flag=service.adduser(dto);// this  is  spring JDBCTemplet impl 
+					boolean flag=service.adduserHB(dto);// this  is  Hibernet impl 
+
 			if(flag) {
 				modal.addObject("username", dto.getEmail());
 				modal.setViewName("index2");
