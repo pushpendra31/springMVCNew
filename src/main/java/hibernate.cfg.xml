@@ -18,13 +18,7 @@
         <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
         
     <mapping class="com.myproj.DTOs.LoginRegisterDTO" />
-          <mapping class="com.myproj.DTOs.ProductDto" />
-                    <mapping class="com.myproj.DTOs.Prod" />
-          
-                    <mapping class="com.myproj.DTOs.Subcat" />
-                                        <mapping class="com.myproj.DTOs.Student" />
-                    
-                                        <mapping class="com.myproj.DTOs.Teacher" />
+        
                     
           
      
