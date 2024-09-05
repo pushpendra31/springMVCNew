@@ -3,6 +3,7 @@ package com.myproj.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -141,7 +142,8 @@ e.printStackTrace();
 		if(dto!=null) {
 			
 		
-		showuserdto = service.showRegistereduser(dto);
+		//showuserdto = service.showRegistereduser(dto);// spring jdbc,templet impl
+		showuserdto = service.showRegistereduserHB(dto);// this is  for  hiibernate 
 		   modal.setViewName("ShowUsers2");
 		modal.addObject("showuser",showuserdto);
 		}
@@ -160,4 +162,30 @@ e.printStackTrace();
 
 	
 
-	}}
+	}
+	@RequestMapping(value ="/updateuserDtls" , method = RequestMethod.POST)
+	public ModelAndView  updateUserDtls(@ModelAttribute LoginRegisterDTO dto, Model  modal1) {
+		ModelAndView modal=new ModelAndView ();
+
+		List<LoginRegisterDTO> showuserdto = new ArrayList<LoginRegisterDTO>();   
+		EhcacheCachingProvider ok;
+		try {
+			if(dto!=null) {
+			showuserdto = service.updateuserDtls(dto);// this is  for  hiibernate 
+			   modal.setViewName("ShowUsers2");
+			modal.addObject("showuser",showuserdto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		     modal.setViewName("error");
+		     modal.addObject("msg", "Issue Here !");
+			return modal;
+		}
+		
+
+		return modal;
+	}
+	
+}

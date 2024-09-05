@@ -6,12 +6,28 @@
 	<hibernate-configuration>
 	<session-factory>
 	    <property name="hbm2ddl.auto">update</property>  
-      <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>  
+      <property name="dialect">org.hibernate.dialect.MySQLDialect</property>  
       <property name="connection.url">jdbc:mysql://localhost:3306/jspproject</property>  
       <property name="connection.username">root</property>  
       <property name="connection.password">pushp </property>  
-      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
+      <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>  
       <property name="show_sql">true</property>
-     <mapping class="com.myproj.DTOs.LoginRegisterDTO" />
+   <property name="hibernate.cache.use_second_level_cache">true</property>
+   <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+        
+    <mapping class="com.myproj.DTOs.LoginRegisterDTO" />
+          <mapping class="com.myproj.DTOs.ProductDto" />
+                    <mapping class="com.myproj.DTOs.Prod" />
+          
+                    <mapping class="com.myproj.DTOs.Subcat" />
+                                        <mapping class="com.myproj.DTOs.Student" />
+                    
+                                        <mapping class="com.myproj.DTOs.Teacher" />
+                    
+          
+     
+     
 	</session-factory>
 	</hibernate-configuration>

@@ -121,7 +121,7 @@ h1, p{
     <input type="email" id="email" name="email"  value=<%=emaill%>  required>  <br>
 
     <label for="contactNo">Contact Number:</label>
-    <input type="tel" id="Contact" name="Contact" required><br>
+    <input type="tel" id="contactno" name="contactno" required><br>
 
     <label>Gender:</label>
     <input type="radio" id="male" name="gender" value="male">

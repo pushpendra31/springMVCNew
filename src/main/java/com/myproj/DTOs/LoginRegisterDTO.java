@@ -4,19 +4,31 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 @Component("logindto")
 @Entity
 @Table(name ="persons")
+
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class LoginRegisterDTO implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,9 +53,14 @@ public class LoginRegisterDTO implements Serializable{
 	@Column(name = "username")
 	private String username;
 
+	/*
+	 * @OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "prd") thhis  for  if  we are usinng mapping and need  cache both 
+	 * 
+	 * @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	 * //@JoinColumn(name = "sbid") private List<Subcat> subcls;
+	 */
 	private boolean flag;
 	@Column(name = "role")
-
 	private String  role;
 	
 	
@@ -84,6 +101,7 @@ public class LoginRegisterDTO implements Serializable{
 				+ ", getContact()=" + getContact() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
+	@Transient
 	private Long Contact;
 	
 	@Column(name = "CRT_DT")

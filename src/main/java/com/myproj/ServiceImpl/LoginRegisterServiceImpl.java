@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.myproj.ConfigJava.ServiceLocator;
 import com.myproj.DAO.LoginRegisterDAO;
 import com.myproj.DTOs.LoginRegisterDTO;
+import com.myproj.DTOs.ProductDto;
+import com.myproj.DTOs.SubcatDto;
 import com.myproj.DaoImpl.LoginRegisterDaoImpl;
 import com.myproj.service.LoginRegisterService;
 @Service
@@ -52,6 +54,24 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
 	public boolean adduserHB(LoginRegisterDTO dto) {
 		boolean flag=dao.adduserHB(dto);
 		return flag;
+	}
+
+	@Override
+	public List<LoginRegisterDTO> showRegistereduserHB(LoginRegisterDTO dto) {
+		return dao.showRegistereduserHB(dto);
+	}
+
+
+
+	@Override
+	public ProductDto getHibernetdata() {
+		return dao.getHibernetdata();
+	}
+
+	@Override
+	public List<LoginRegisterDTO> updateuserDtls(LoginRegisterDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updateuserDtls(dto);
 	}
 
 }
