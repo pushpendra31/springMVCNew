@@ -3,6 +3,7 @@ package com.myproj.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +28,7 @@ import com.myproj.service.LoginRegisterService;
 @Controller
 public class LoginRegisterController {
 
-
+	  private Logger logger = Logger.getLogger(LoginRegisterController.class);
 	@Autowired
 	 private   LoginRegisterService service ;
 		/*
@@ -44,6 +45,7 @@ public class LoginRegisterController {
 	//@PostMapping(value ="LoginServlet")
 	@RequestMapping(value ="/LoginServlet" , method = RequestMethod.POST)
 	public ModelAndView  login(@RequestParam("username") String username,@RequestParam("password") String password) {
+		logger.info("Loggin in spring mvc prject  started");
 		ModelAndView modal=new ModelAndView ();
 	
 		LoginRegisterDTO dto = new LoginRegisterDTO();   
@@ -80,6 +82,9 @@ LoginRegisterDTO login = null;
 		
 		else {modal.addObject("msg", "Invalid username or password!");
 	     modal.setViewName("login2");}
+		logger.info("Loggin in spring mvc prject  ended");
+		logger.error("Loggin in spring mvc prject  ended");
+
 
 		return modal;
 	
@@ -166,6 +171,7 @@ e.printStackTrace();
 	@RequestMapping(value ="/updateuserDtls" , method = RequestMethod.POST)
 	public ModelAndView  updateUserDtls(@ModelAttribute LoginRegisterDTO dto, Model  modal1) {
 		ModelAndView modal=new ModelAndView ();
+		logger.info("updateuserDtls api call started");
 
 		List<LoginRegisterDTO> showuserdto = new ArrayList<LoginRegisterDTO>();   
 		EhcacheCachingProvider ok;

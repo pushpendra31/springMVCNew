@@ -15,6 +15,7 @@ import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.NamedQuery;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
@@ -28,15 +29,12 @@ import com.myproj.ConfigJava.DBConUtil;
 import com.myproj.ConfigJava.HibernateSession;
 import com.myproj.DAO.LoginRegisterDAO;
 import com.myproj.DTOs.LoginRegisterDTO;
-import com.myproj.DTOs.Prod;
-import com.myproj.DTOs.ProductDto;
-import com.myproj.DTOs.Student;
-import com.myproj.DTOs.Subcat;
-import com.myproj.DTOs.Teacher;
+
 import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
 public class LoginRegisterDaoImpl implements LoginRegisterDAO {
+
 	@Autowired
 	DBConUtil dbutil;
 	@Autowired
@@ -207,27 +205,39 @@ public class LoginRegisterDaoImpl implements LoginRegisterDAO {
 
 	@Override
 	public List<LoginRegisterDTO> showRegistereduserHB(LoginRegisterDTO dto) {
-	
+
 		Session session = HbSession.getSession();
 		List<LoginRegisterDTO> allUser = null;
-		System.out.println("query Started =");
+StringBuilder str=new StringBuilder();
+str.append("select * from persons");
+if(dto==null) {
+}
+else if (dto.getFname()!=null) {
+	str.append("  where FirstName='"+dto.getFname()+"' ");
+	
+} else if (dto.getFname()==null && dto.getOntactno()!=null) {
+	str.append("  where FirstName='"+dto.getOntactno()+"'");
 
+}
 		// allUser=session.createQuery("from
 		// LoginRegisterDTO",LoginRegisterDTO.class).getResultList();
 		// //get(LoginRegisterDTO.class, 101);
-		Query<LoginRegisterDTO> createQuery = session.createQuery("from LoginRegisterDTO", LoginRegisterDTO.class).setCacheable(true);
-		createQuery.setFirstResult(0).setCacheable(true);
-		createQuery.setMaxResults(10).setCacheable(true);
-		System.out.println("query executted =");
-
 		/*
-		 * create Native sql query and use use it
-		 * 
-		 * NativeQuery<LoginRegisterDTO> createNativeQuery = session
-		 * .createNativeQuery("select * from persons where personID=a",
-		 * LoginRegisterDTO.class); createNativeQuery.setParameter("a", 1);
+		 * Query<LoginRegisterDTO> createQuery =
+		 * session.createQuery("from LoginRegisterDTO",
+		 * LoginRegisterDTO.class).setCacheable(true);
+		 * createQuery.setFirstResult(0).setCacheable(true);
+		 * createQuery.setMaxResults(10).setCacheable(true);
+		 * System.out.println("query executted =");
 		 */
-		allUser = createQuery.getResultList();
+		
+		  //create Native sql query and use use it
+		  
+		  NativeQuery<LoginRegisterDTO> createNativeQuery = session
+		  .createNativeQuery(str.toString(),
+		  LoginRegisterDTO.class).setCacheable(true) ;
+		  allUser=createNativeQuery.getResultList();
+		//allUser = createQuery.getResultList();
 		session.close();
 		System.out.println("session closed =");
 
@@ -236,20 +246,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDAO {
 
 
 
-	@Override
-	public ProductDto getHibernetdata() {// this  method only  for  test
-		ProductDto productDto=null;
-		Session session = HbSession.getSession();
-		Prod std = session.get(Prod.class, 1);
-		System.out.println("First session std dto =" + std);
 
-		session.close();
-		Session session1 = HbSession.getSession();
-		Prod std1 = session1.get(Prod.class, 1);
-		System.out.println("Seond session std1 dto =" + std1);
-		session1.close();
-		return productDto;
-	}
 
 	//public static void main(String[] args) {}
 

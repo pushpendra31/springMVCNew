@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myproj.DTOs.ProductDto;
-import com.myproj.DTOs.SubcatDto;
+
 import com.myproj.service.LoginRegisterService;
 
 @RestController
@@ -25,16 +24,10 @@ public class TestController {
 	
 	@RequestMapping(value="/HBDTOtest",method = RequestMethod.GET,produces="application/json")
 	@CrossOrigin(origins="*")
-	public  ResponseEntity<SubcatDto> HiberDTOInsert() {
-		ProductDto dto;
-		//dto=service.getHibernetdata();
-		//System.out.println("get data is ="+dto);
-	    //HttpHeaders headers = new HttpHeaders();
-		SubcatDto dts=new SubcatDto();
-		dts.setSubCatName("its sub cat");
-		dts.setSubId(1);
+	public  ResponseEntity<Object> HiberDTOInsert() {
+	
         
-        ResponseEntity<SubcatDto> entity = new ResponseEntity<>(dts,HttpStatus.CREATED);
+        ResponseEntity<Object> entity = new ResponseEntity<>(null,HttpStatus.CREATED);
          
 		return entity;
 		

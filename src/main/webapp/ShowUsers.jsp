@@ -44,6 +44,7 @@
   <th>Email</th>
  <th>Gender</th>
  <th>Contact</th>
+    <th>Action</th>
             </tr>
 
     
@@ -60,6 +61,8 @@
                  <TD>${item.getEmail()}</TD>
                 <TD>${item.getGender()}</TD>
                 <TD>${item.getContact()}</TD>
+                <TD><button onclick="editData(this)">Edit</button>edit </TD>
+                
               
             </TR>
             </c:if>

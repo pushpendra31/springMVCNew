@@ -24,7 +24,7 @@
           <li><a href="AboutUs.jsp">About Us</a></li>
           <li><a href="ShowUsers.jsp">Latest</a></li>
           <li><a href="test.jsp">Offers</a></li>
-          <li><a href="#">Products</a></li>
+          <li><a href="Developer.jsp">Products</a></li>
             <li><a href="https://www.flipkart.com/"> <i class='fas fa-cart-arrow-down' style='font-size:30px;color:#FFDEAD'></i></a></li>   
         </ul>
                
@@ -53,13 +53,13 @@
       <div class="hero">
         <h2>We are happy to see you</h2>
         <p>
-       I am  Java Web Developers having 3.5 years of experience in web development using Java and Spring    
+       I am  Java Web Developers having 3.8 years of experience in web development using Java and Spring    
          Framework ,application support. Adept analyzing information system need working with client,business managers
-          and technical team for, evaluating end user requirements custom design solution.
+          and technical team for evaluating end user requirements custom design solution.
         </p>
         <div class="buttons">
-          <a href="#" class="join">Join Now</a>
-          <a href="https://media.licdn.com/dms/image/D4D03AQH_duJ2mL7MSw/profile-displayphoto-shrink_800_800/0/1702548705271?e=1724284800&v=beta&t=K8FCj6_n5RZsv2MvJtcnsMqnkrs2kvpPqIPinc3vL4c" class="learn">Learn More</a>
+          <a href="login.jsp" class="join">Join Now</a>
+          <a href="Developer.jsp" class="learn">Learn More</a>
         </div>
       </div>
       <div class="img">
